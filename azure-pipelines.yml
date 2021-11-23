@@ -17,8 +17,7 @@ variables:
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
-  # vmImageName: 'ubuntu-latest'
-  vmImageName: 'SelfHostedPool'
+  vmImageName: 'ubuntu-latest'
 
 stages:
 - stage: Build
@@ -38,3 +37,10 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+      
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'containerregistrypruebas'
+        command: 'start'
+        arguments: '-e AZP_URL=https://dev.azure.com/Jsotoc/ -e AZP_TOKEN=7voc5lo4zn2cgryjcmt2yyudexcut5dqnaafgcflu44hiyuwavfa -e AZP_AGENT_NAME=SelfHostedAgentContainers -e AZP_POOL=SelfHostedPool'
+        container: 'dockeragent:v1'
