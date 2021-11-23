@@ -42,5 +42,5 @@ stages:
       inputs:
         containerRegistry: 'containerregistrypruebas'
         command: 'start'
-        arguments: '-e AZP_URL=https://dev.azure.com/Jsotoc/ -e AZP_TOKEN=7voc5lo4zn2cgryjcmt2yyudexcut5dqnaafgcflu44hiyuwavfa -e AZP_AGENT_NAME=SelfHostedAgentContainers -e AZP_POOL=SelfHostedPool'
+        arguments: ''
         container: 'dockeragent:v1'
