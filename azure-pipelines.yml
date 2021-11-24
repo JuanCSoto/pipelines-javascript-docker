@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'b974cef4-a047-4aff-b5e9-fbc43e6249ce'
-  imageRepository: 'juancsotopipelinesjavascriptdocker'
+  imageRepository: 'dockeragent:v1'
   containerRegistry: 'containerregistrypruebas.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
   tag: '$(Build.BuildId)'
