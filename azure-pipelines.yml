@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'b974cef4-a047-4aff-b5e9-fbc43e6249ce'
-  imageRepository: 'dockeragent:v1'
+  imageRepository: 'dockeragent'
   containerRegistry: 'containerregistrypruebas.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
   tag: '$(Build.BuildId)'
@@ -48,4 +48,4 @@ stages:
       inputs:
         containerRegistry: $(dockerRegistryServiceConnection)
     - script : |
-         docker run -e AZP_URL=https://dev.azure.com/Jsotoc/ -e AZP_TOKEN=$(kvpat) -e AZP_AGENT_NAME=SelfHostedAgentContainers -e AZP_POOL=SelfHostedPool containerregistrypruebas.azurecr.io/dockeragent:v1
+         docker run -e AZP_URL=https://dev.azure.com/Jsotoc/ -e AZP_TOKEN=$(kvpat) -e AZP_AGENT_NAME=SelfHostedAgentContainers -e AZP_POOL=SelfHostedPool containerregistrypruebas.azurecr.io/dockeragent:$(Build.BuildId)
