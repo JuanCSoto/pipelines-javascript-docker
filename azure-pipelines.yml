@@ -28,6 +28,11 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
+    - task: AzureKeyVault@2
+      inputs:
+        azureSubscription: 'Suscripción de Visual Studio Enterprise(1)(ce5edc26-505c-4440-ad07-15c0e09e4f95)'
+        KeyVaultName: 'GruVarProyectosPruebas'
+        SecretsFilter: 'EditableOptions'
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
@@ -37,10 +42,10 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-      
+
     - task: Docker@2
+      displayName: Inicia container
       inputs:
-        containerRegistry: 'containerregistrypruebas'
-        command: 'start'
-        arguments: ''
-        container: 'dockeragent:v1'
+        containerRegistry: $(dockerRegistryServiceConnection)
+    - script : |
+         docker run -e AZP_URL=https://dev.azure.com/Jsotoc/ -e AZP_TOKEN=$(kvpat) -e AZP_AGENT_NAME=SelfHostedAgentContainers -e AZP_POOL=SelfHostedPool containerregistrypruebas.azurecr.io/dockeragent:v1
