@@ -32,7 +32,7 @@ stages:
       inputs:
         azureSubscription: 'Suscripción de Visual Studio Enterprise(1)(ce5edc26-505c-4440-ad07-15c0e09e4f95)'
         KeyVaultName: 'GruVarProyectosPruebas'
-        SecretsFilter: 'EditableOptions'
+        SecretsFilter: '*'
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
