@@ -45,5 +45,5 @@ stages:
         containerRegistry: 'containerregistrypruebas'
         command: 'start'
         arguments: ''
-        container: 'containerregistrypruebas.azurecr.io/$(imageRepository):$(Build.BuildId)'
+        container: 'SelfHostedAgentContainers'
 
