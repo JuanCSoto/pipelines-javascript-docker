@@ -1,13 +1,10 @@
 # Docker
 # Build and push an image to Azure Container Registry
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
 trigger:
 - master
-
 resources:
 - repo: self
-
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'b974cef4-a047-4aff-b5e9-fbc43e6249ce'
@@ -30,7 +27,7 @@ stages:
     steps:
     - task: AzureKeyVault@2
       inputs:
-        azureSubscription: 'Suscripción de Visual Studio Enterprise(1)(ce5edc26-505c-4440-ad07-15c0e09e4f95)'
+        azureSubscription: 'Suscripción de Visual Studio Enterprise(1)(ce5edc26-505c-4440-ad07-15c0e09e4f95)'
         KeyVaultName: 'GruVarProyectosPruebas'
         SecretsFilter: '*'
     - task: Docker@2
@@ -42,9 +39,8 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-
     - task: Docker@2
-      displayName: Start a container 
+      displayName: Start container 
       inputs:
         repository: $(imageRepository)
         containerRegistry: $(dockerRegistryServiceConnection)
