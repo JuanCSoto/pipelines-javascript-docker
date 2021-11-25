@@ -45,5 +45,5 @@ stages:
         containerRegistry: 'containerregistrypruebas'
         command: 'start'
         arguments: ''
-        container: '$(dockerRegistryServiceConnection)/$(imageRepository):$(Build.BuildId)'
+        container: '$(containerRegistry)/$(imageRepository):$(Build.BuildId)'
 
