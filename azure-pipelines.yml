@@ -44,6 +44,6 @@ stages:
       inputs:
         containerRegistry: 'containerregistrypruebas'
         command: 'start'
-        arguments: '-e AZP_URL=https://dev.azure.com/Jsotoc/ -e AZP_TOKEN=$(kvpat) -e AZP_AGENT_NAME=SelfHostedAgentContainers -e AZP_POOL=SelfHostedPool'
+        arguments: ''
         container: '$(imageRepository)'
 
