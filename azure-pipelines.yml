@@ -27,9 +27,10 @@ stages:
     steps:
     - task: AzureKeyVault@2
       inputs:
-        azureSubscription: 'Suscripción de Visual Studio Enterprise(1)(ce5edc26-505c-4440-ad07-15c0e09e4f95)'
+        azureSubscription: 'Suscripción de Visual Studio Enterprise(ce5edc26-505c-4440-ad07-15c0e09e4f95)'
         KeyVaultName: 'GruVarProyectosPruebas'
         SecretsFilter: '*'
+        RunAsPreJob: true
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
