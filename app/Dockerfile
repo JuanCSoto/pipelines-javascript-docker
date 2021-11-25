@@ -35,7 +35,7 @@ RUN dotnet help
 ENV dotnet=/usr/bin/dotnet
 
 ARG TARGETARCH=amd64
-ARG AGENT_VERSION=2.194.1
+ARG AGENT_VERSION=2.194.0
 
 WORKDIR /azp
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
