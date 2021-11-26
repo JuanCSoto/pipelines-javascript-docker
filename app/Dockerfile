@@ -12,29 +12,29 @@ RUN apt-get install -y --no-install-recommends \
 	apt-transport-https \
     ca-certificates \
     curl \
-	software-properties-common \
+    software-properties-common \
     jq \
     git \
     iputils-ping \
     libcurl4 \
     libunwind8 \
     netcat \
-    libssl1.0 \
-	gnupg-agent \
-	wget \
-	lsb-release \
-	gnupg \
+    libssl1.0 \	
+    gnupg-agent \
+    wget \
+    lsb-release \
+    gnupg \
   && rm -rf /var/lib/apt/lists/*
 
-RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" && apt-get update
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" && apt-get update
+RUN sudo apt-get update
+RUN sudo apt-get install docker-ce
+RUN sudo systemctl status docker
+
 RUN apt-get install -y --no-install-recommends openssh-client
 RUN curl -LsS https://aka.ms/InstallAzureCLIDeb | bash \
   && rm -rf /var/lib/apt/lists/*
-
-RUN curl -fsSL https://get.docker.com -o get-docker.sh
-RUN chmod +x get-docker.sh
-RUN sh get-docker.sh
 
 # Install .NET Core SDK and initialize package cache
 RUN curl https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb > packages-microsoft-prod.deb \
