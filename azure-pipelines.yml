@@ -30,9 +30,6 @@ stages:
         KeyVaultName: 'GruVarProyectosPruebas'
         SecretsFilter: '*'
         RunAsPreJob: true
-    - task: DockerInstaller@0
-      inputs:
-        dockerVersion: '17.09.0-ce'
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
@@ -48,5 +45,5 @@ stages:
         repository: $(imageRepository)
         containerRegistry: $(dockerRegistryServiceConnection)
     - script : |
-         docker run -d -e AZP_URL=https://dev.azure.com/Jsotoc/ -e AZP_TOKEN=$(kvpat) -e AZP_AGENT_NAME=SelfHostedAgentContainersPipeline -e AZP_POOL=SelfHostedPool containerregistrypruebas.azurecr.io/dockeragent:$(Build.BuildId)
+         docker run -d -e AZP_URL=https://dev.azure.com/Jsotoc/ -e AZP_TOKEN=$(kvTokenPruebasDevOps) -e AZP_AGENT_NAME=SelfHostedAgentContainersPipeline -e AZP_POOL=SelfHostedPool containerregistrypruebas.azurecr.io/dockeragent:$(Build.BuildId)
 
