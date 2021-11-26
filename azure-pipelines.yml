@@ -22,8 +22,7 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool:
-      vmImage: $(vmImageName)
+    pool: SelfHostedPool          
     steps:
     - task: AzureKeyVault@2
       inputs:
