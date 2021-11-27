@@ -32,7 +32,11 @@ RUN sudo apt-get update
 RUN sudo apt-get install docker-ce
 RUN sudo systemctl enable docker
 RUN service docker start
+RUN systemctl start docker
+RUN sudo service docker restart
+RUN sudo docker run hello-world
 RUN sudo systemctl status docker
+
 
 RUN apt-get install -y --no-install-recommends openssh-client
 RUN curl -LsS https://aka.ms/InstallAzureCLIDeb | bash \
