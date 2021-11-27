@@ -35,7 +35,6 @@ stages:
         script: |
           echo Write your commands here
           
-          docker run hello-world
-          docker run --help
+          docker -v
           
           echo Hello world
