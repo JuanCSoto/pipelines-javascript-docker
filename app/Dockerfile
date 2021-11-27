@@ -6,9 +6,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
-RUN apt-get update
+RUN sudo apt-get update
 
-RUN apt-get install -y --no-install-recommends \
+RUN sudo apt-get install -y --no-install-recommends \
 	apt-transport-https \
     ca-certificates \
     curl \
@@ -29,14 +29,8 @@ RUN apt-get install -y --no-install-recommends \
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" && apt-get update
 RUN sudo apt-get update
-RUN sudo apt-get install docker-ce
-RUN sudo systemctl enable docker
-RUN service docker start
-RUN systemctl start docker
-RUN sudo service docker restart
+RUN sudo apt-get install docker-ce docker-ce-cli containerd.io
 RUN sudo docker run hello-world
-RUN sudo systemctl status docker
-
 
 RUN apt-get install -y --no-install-recommends openssh-client
 RUN curl -LsS https://aka.ms/InstallAzureCLIDeb | bash \
