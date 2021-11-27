@@ -36,5 +36,6 @@ stages:
           echo Write your commands here
           
           docker run hello-world
+          docker run --help
           
           echo Hello world
