@@ -30,6 +30,8 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" && apt-get update
 RUN sudo apt-get update
 RUN sudo apt-get install docker-ce
+RUN sudo systemctl enable docker
+RUN service docker start
 RUN sudo systemctl status docker
 
 RUN apt-get install -y --no-install-recommends openssh-client
