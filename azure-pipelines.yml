@@ -35,8 +35,7 @@ stages:
         script: |
           echo Write your commands here
           
-          docker -v
-          systemctl enable docker
+          service docker start                    
           service --status-all
           docker run hello-world
           
