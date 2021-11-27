@@ -30,13 +30,13 @@ stages:
         KeyVaultName: 'GruVarProyectosPruebas'
         SecretsFilter: '*'
         RunAsPreJob: true
-    - task: CmdLine@2
+        
+    - task: PowerShell@2
       inputs:
+        targetType: 'inline'
         script: |
-          echo reinicio de docker
-          dockerd
-
-          echo Se verifica
-          docker run hello-world
+          # Write your PowerShell commands here.
           
-          echo Fin
+          docker run hello-world
+
+          Write-Host "Fin"
