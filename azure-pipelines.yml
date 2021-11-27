@@ -36,6 +36,6 @@ stages:
           echo Write your commands here
           
           docker -v
-          systemctl start docker
+          sudo systemctl start docker
           
           echo Hello world
