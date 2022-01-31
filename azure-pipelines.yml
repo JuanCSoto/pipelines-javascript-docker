@@ -39,4 +39,4 @@ stages:
           
           docker run hello-world
 
-          Write-Host "Fin - PRUEBA"
+          Write-Host "Fin - PRUEBA juan"
